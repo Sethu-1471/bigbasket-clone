@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Footer() {
     return (
         <FooterContainer>
-                <span>Copyright © 2020-2022 BigBasket Clone By Sethupathi(github Link)</span>
+                <span>Copyright © 2020-2022 BigBasket Clone By Sethupathi(<a href="https://github.com/Sethu-1471/bigbasket-clone">github Link</a>)</span>
             </FooterContainer>
     )
 }
