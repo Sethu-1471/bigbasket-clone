@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import payLogo from "../assets/pay.png"
 
 import {Facebook, Twitter, Instagram } from "react-bootstrap-icons"
 
@@ -59,6 +60,40 @@ We deliver to 25 cities across India and maintain excellent delivery times, ensu
                         </span>
                     </span>
                 </EndPortionCenter>
+                <hr />
+                <EndPortionFooter>
+                <span>
+                        <span className="LeftSide">
+                        POPULAR CATEGORIES:
+                        </span>
+                        <span className="RightSide">
+                            Sunflower Oils, Wheat Atta, Ghee, Milk, Health Drinks, Flakes, Organic F&V, Namkeen, Eggs, Floor Cleaners, Other Juices, Leafy Vegetables, Frozen Veg Food, Diapers & Wipes,
+                        </span>
+                    </span>
+                    <span>
+                        <span className="LeftSide">
+                        POPULAR BRANDS:
+                        </span>
+                        <span className="RightSide">
+                        Fresho, bb Royal, Nandini, Kelloggs, 24 Mantra, Saffola, Lizol, Safal, Horlicks, MTR, Fresho Meats, Whisper , Real, Milky Mist, Nivea, Himalaya, Comfort, Sunpure , Bru , Zespri, </span>
+                    </span>
+                    <span>
+                        <span className="LeftSide">
+                        CITIES WE SERVE:
+                        </span>
+                        <span className="RightSide">
+                           
+                        Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Nashik, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, </span>
+                    </span>
+                    <span>
+                        <span className="LeftSide">
+                        PAYMENT OPTIONS:
+                        </span>
+                        <span className="RightSide">
+                            <img src={payLogo} width="50%" />
+                        </span>
+                    </span>
+            </EndPortionFooter>
             </span>
         </EndPortionContainer>
     )
@@ -105,3 +140,21 @@ const EndPortionCenter = styled.div`
     }
 `;
 
+const EndPortionFooter = styled.div`
+    margin-top: 20px;
+   >span {
+       padding: 10px 20px;
+       display: flex;
+       flex: 1;
+      >.LeftSide{
+          color: #84C225;
+          font-size: 14px;
+          flex: 0.2;
+      }
+      >.RightSide{
+          flex:0.8;
+          font-size: 13px;
+          margin-left: -40px;
+      }
+   }
+`;
