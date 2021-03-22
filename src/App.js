@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import Navbar from "./components/Navbar";
-import Header from "./components/Header"
 import FirstSlider from "./components/FirstSlider";
 import SecondSlider from './components/SecondSlide'
 import styled from "styled-components";
@@ -72,10 +71,28 @@ function App() {
   let houseHolds = [{image: HImageOne, name: "Detergent Poweder"},{image: HmageTwo, name: "Liquid Detergent"},{image: HImageThree, name: "Home Cleaners"},{image: HImageFour, name: "Freshners"}];
   let brand = [BrImageOne, brImageTwo, BrImageThree, BrImageFour, BrImageFive, BrImageSix];
 
+  const [show, setShow] = useState(false);
+    
+    const handleScroll = () => {
+        if (
+            document.body.scrollTop >= 35 ||
+            document.documentElement.scrollTop >= 35
+          ) {
+            setShow(true);
+          } else {
+            setShow(false);
+            }
+    }
+    
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <AppContainer>
-      <Header />
-      {/* {!show ? <Navbar /> : <ScrollHeader />} */}
+      <Navbar />
+      {!show ? null : <ScrollHeader />}
       <FirstSlider />
       <Lists />
       <SmartBasket />
