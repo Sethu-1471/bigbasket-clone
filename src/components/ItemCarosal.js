@@ -49,7 +49,6 @@ function Carosal() {
     }
     
     useEffect(() => {
-        console.log({index});
         for (let i = 0; i < document.getElementsByClassName("carousel-indicators").length; i++) {
             document.getElementsByClassName("carousel-indicators")[i].style.display = "none"
         }

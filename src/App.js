@@ -1,4 +1,6 @@
-import Navbar from "./components/Navbar"
+import React, {useEffect, useState} from "react";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header"
 import FirstSlider from "./components/FirstSlider";
 import SecondSlider from './components/SecondSlide'
 import styled from "styled-components";
@@ -11,7 +13,8 @@ import FrameTwo from "./components/FrameTwo";
 import ThirdSlide from "./components/ThirdSlide"
 import FourthSlider from "./components/FourthSlider";
 import EndPortion from "./components/EndPortion";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import ScrollHeader from "./components/ScrollNav";
 //Images 
 import BImageOne from "./assets/popular/1.jpg"
 import BImageTwo from "./assets/popular/2.jpg"
@@ -68,9 +71,11 @@ function App() {
   let drinks = [{image: DbImageOne, name: "Tea & Coffee"},{image: DbmageTwo, name: "Cold Drinks"},{image: DbImageThree, name: "Juices"},{image: DbImageFour, name: "Health Drinks"}];
   let houseHolds = [{image: HImageOne, name: "Detergent Poweder"},{image: HmageTwo, name: "Liquid Detergent"},{image: HImageThree, name: "Home Cleaners"},{image: HImageFour, name: "Freshners"}];
   let brand = [BrImageOne, brImageTwo, BrImageThree, BrImageFour, BrImageFive, BrImageSix];
+
   return (
     <AppContainer>
-      <Navbar />
+      <Header />
+      {/* {!show ? <Navbar /> : <ScrollHeader />} */}
       <FirstSlider />
       <Lists />
       <SmartBasket />
