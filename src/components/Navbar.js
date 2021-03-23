@@ -216,7 +216,7 @@ const HeaderBottomNav = styled.div`
         display: flex;
         align-items: center;
         >svg {
-            margin-left: 30px;
+            margin-left: 60px;
         }
     }
 
