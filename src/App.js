@@ -59,7 +59,7 @@ import brImageTwo from "./assets/store/2.png"
 import BrImageThree from "./assets/store/3.png"
 import BrImageFour from "./assets/store/4.png"
 import BrImageFive from "./assets/store/5.png"
-import BrImageSix from "./assets/store/6.png"
+import BrImageSix from "./assets/store/6.png" 
 
 function App() {
   let mostPopular = [{image: BImageOne, name: "Masks & Gloves"},{image: BImageTwo, name: "Ice Creams & Milk"},{image: BImageThree, name: "Summer Fresh Face Wash"},{image: BImageFour, name: "Holi Colors"}];

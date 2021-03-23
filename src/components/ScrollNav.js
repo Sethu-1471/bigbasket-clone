@@ -1,16 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components";
 import {  ChevronCompactDown, Cart3, Search } from 'react-bootstrap-icons';
-import logo from "../assets/smallLogo.png"
+import logo from "../assets/smallLogo.png";
+import Dropdown from "./Dropdown";
+import { useDetectOutsideClick } from "./useDetectOutsideClick";
+
 
 export default function ScrollNav() {
+    const [dropDownRef, setDropDownref] = useState(null);
+    const [isActive, setIsActive] = useDetectOutsideClick(dropDownRef, false);
+
+    const onClick = () => setIsActive(true);
+
+    const DropdownRef = (some) => setDropDownref(some);
+
     return (
         <ScrollNavContainer>
             <span>
+            {isActive ? <Dropdown setRef={DropdownRef} top="58" /> : null}
             <HeaderBottom>
                 <HeaderBottomImage>
                         <img src={logo}></img>
-                        <span>Shop <ChevronCompactDown /> </span>
+                        <span onMouseOver={onClick}>Shop <ChevronCompactDown /> </span>
                 </HeaderBottomImage>
                 <HeaderBottomSearch>
                     <input placeholder="Search for products" />

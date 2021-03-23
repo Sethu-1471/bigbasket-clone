@@ -1,13 +1,23 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import styled from "styled-components";
 import { Telephone, GeoAlt, Map, ChevronCompactDown, Cart3, Person, Search, TagFill } from 'react-bootstrap-icons';
-import logo from "../assets/BigBasketLogo.jpg"
+import logo from "../assets/BigBasketLogo.jpg";
+import Dropdown from "./Dropdown";
+import { useDetectOutsideClick } from "./useDetectOutsideClick";
 
 export default function Navbar() {
-    return (
+    const [dropDownRef, setDropDownref] = useState(null);
+    const [isActive, setIsActive] = useDetectOutsideClick(dropDownRef, false);
 
+    const onClick = () => setIsActive(true);
+
+    const DropdownRef = (some) => setDropDownref(some);
+
+    return (
             <HeaderContainer>
-                <span>
+            <span>
+                {isActive ? <Dropdown setRef={DropdownRef} top="120" /> : null}
+                {/* <Dropdown setRef={DropdownRef} /> */}
             <HeaderTop>
                 <HeaderTopLeft>
                     <span>
@@ -45,8 +55,8 @@ export default function Navbar() {
                     </HeaderBottomCartEnd>
                 </HeaderBottomCart>
                 </HeaderBottom>
-                <HeaderBottomNav>
-                <span>
+                <HeaderBottomNav >
+                <span onMouseOver={onClick}>
                         Shop by category
                         <ChevronCompactDown />
                 </span>
@@ -121,7 +131,7 @@ const HeaderBottomImage = styled.div`
     flex: 0.2;
 
     > img {
-       width: 180px;
+       width: 150px;
        margin-top: auto;
     }
 `;
@@ -197,6 +207,7 @@ const HeaderBottomNav = styled.div`
     border: 1px solid #F2F2F2;
 
     >span:nth-child(1) {
+        cursor: pointer;
         text-transform: uppercase;
         font-weight: bold;
         padding: 6px 6px;
