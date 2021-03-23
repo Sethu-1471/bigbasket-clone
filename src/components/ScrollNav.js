@@ -13,7 +13,7 @@ export default function ScrollNav() {
     const onClick = () => setIsActive(true);
 
     const DropdownRef = (some) => setDropDownref(some);
-
+    console.log(useDetectOutsideClick(dropDownRef, false));
     return (
         <ScrollNavContainer>
             <span>

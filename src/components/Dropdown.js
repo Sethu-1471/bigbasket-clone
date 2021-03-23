@@ -71,6 +71,7 @@ export default function Dropdown({ setRef, top }) {
 
     const DropdownRef = useRef(null);
     const [index, setIndex] = useState(0);
+    const [hoveringIndex, setHoveringIndex] = useState(0);
     const [secondDropdown, setSecondDropdown] = useState(Object.values(dropDownMenu[0])[0]);
     const [thirdDropdown, setThirdDropdown] = useState(Object.values(Object.values(dropDownMenu[0])[0][0])[0]);
     useEffect(() => {
@@ -80,10 +81,13 @@ export default function Dropdown({ setRef, top }) {
     const handleSecondDropdown = (i) => {
         let arr = dropDownMenu[i];
         setIndex(i);
+        setHoveringIndex(0);
         setSecondDropdown(Object.values(arr)[0]);
+        setThirdDropdown(Object.values(Object.values(dropDownMenu[i])[0][0])[0]);
     };
 
     const handleThirdDropdown = (i) => {
+        setHoveringIndex(i);
         let arr = Object.values(dropDownMenu[index])[0][i]
         setThirdDropdown(Object.values(arr)[0]);
     };
@@ -92,6 +96,9 @@ export default function Dropdown({ setRef, top }) {
         top: top + "px"
     }
 
+    let secondSpanstyle = {
+        backgroundColor: "white"
+    }
     return (
         <DropdownContainer ref={DropdownRef} style={style}>
             <span>
@@ -104,7 +111,7 @@ export default function Dropdown({ setRef, top }) {
             <span>
             {
                     secondDropdown.map((el, i) => (
-                        <span key={i} onMouseOver={() => handleThirdDropdown(i)}> {Object.keys(el)[0]} </span>
+                        <span key={i} style={hoveringIndex === i ? secondSpanstyle : null}  onMouseOver={() => handleThirdDropdown(i)}> {Object.keys(el)[0]} </span>
                     ))
                 }
             </span>
@@ -172,7 +179,6 @@ const DropdownContainer = styled.div`
             font-weight: 400;
         }
         >span:hover {
-            background-color: white;
             cursor: pointer;
             font-weight: 500;
             opacity: 1;

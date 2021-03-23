@@ -16,7 +16,7 @@ export default function Navbar() {
     return (
             <HeaderContainer>
             <span>
-                {isActive ? <Dropdown setRef={DropdownRef} top="120" /> : null}
+                {isActive ? <Dropdown setRef={DropdownRef} top="130" /> : null}
                 {/* <Dropdown setRef={DropdownRef} /> */}
             <HeaderTop>
                 <HeaderTopLeft>
@@ -132,7 +132,7 @@ const HeaderBottomImage = styled.div`
 
     > img {
        width: 150px;
-       margin-top: auto;
+       padding-bottom: 10px;
     }
 `;
 
@@ -145,7 +145,7 @@ const HeaderBottomSearch = styled.div`
     justify-content: start;
 
     > input {
-        margin-top: auto;
+        margin-top: 30px;
         background-color: transparent;
         border: 1px solid black;
         text-align: start;
@@ -157,7 +157,7 @@ const HeaderBottomSearch = styled.div`
     }
 
     > span {
-        margin-top: auto;
+        margin-top: 30px;
         height: 30px;
         width: 30px;
         background-color: #84C225;
