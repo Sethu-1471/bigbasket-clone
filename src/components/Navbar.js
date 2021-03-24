@@ -4,6 +4,7 @@ import { Telephone, GeoAlt, Map, ChevronCompactDown, Cart3, Person, Search, TagF
 import logo from "../assets/BigBasketLogo.jpg";
 import Dropdown from "./Dropdown";
 import { useDetectOutsideClick } from "./useDetectOutsideClick";
+import Bucketlogo from "../assets/bucket.png"
 
 export default function Navbar() {
     const [dropDownRef, setDropDownref] = useState(null);
@@ -46,7 +47,7 @@ export default function Navbar() {
                 </HeaderBottomSearch>
                 <HeaderBottomCart>
                     <HeaderBottomCartEnd>
-                        <Cart3 />
+                        <img src={Bucketlogo} />
                         <span>
                             My Basket
                                 <br />
@@ -184,10 +185,10 @@ const HeaderBottomCartEnd = styled.div`
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            > svg {
+            > img {
                 color: #DA251D;
-                width: 25px;
-                height: 25px;
+                width: 35px;
+                height: 35px;
             }
             >span {
                 text-align: end;

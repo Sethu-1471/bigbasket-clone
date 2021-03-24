@@ -4,20 +4,19 @@ import {  ChevronCompactDown, Cart3, Search } from 'react-bootstrap-icons';
 import logo from "../assets/smallLogo.png";
 import Dropdown from "./Dropdown";
 import { useDetectOutsideClick } from "./useDetectOutsideClick";
-
+import Bucketlogo from "../assets/bucket.png"
 
 export default function ScrollNav() {
     const [dropDownRef, setDropDownref] = useState(null);
     const [isActive, setIsActive] = useDetectOutsideClick(dropDownRef, false);
 
     const onClick = () => setIsActive(true);
-
     const DropdownRef = (some) => setDropDownref(some);
-    console.log(useDetectOutsideClick(dropDownRef, false));
+
     return (
         <ScrollNavContainer>
             <span>
-            {isActive ? <Dropdown setRef={DropdownRef} top="58" /> : null}
+            {isActive ? <Dropdown setRef={DropdownRef} top="55" /> : null}
             <HeaderBottom>
                 <HeaderBottomImage>
                         <img src={logo}></img>
@@ -31,7 +30,7 @@ export default function ScrollNav() {
                 </HeaderBottomSearch>
                 <HeaderBottomCart>
                     <HeaderBottomCartEnd>
-                        <Cart3 />
+                        <img src={Bucketlogo} />
                         <span>
                             My Basket
                                 <br />
@@ -55,7 +54,7 @@ const ScrollNavContainer = styled.div`
     >span {
         width: 80%;
         display: flex;
-        padding: 7px 0;
+        padding: 0;
     }
 `;
 
@@ -70,7 +69,7 @@ const HeaderBottom = styled.div`
 
 const HeaderBottomImage = styled.div`
     flex: 0.2;
-
+    padding: 7px 0;
     > img {
        width: 44px;
        margin-top: auto;
@@ -125,16 +124,15 @@ const HeaderBottomCart = styled.div`
 
 const HeaderBottomCartEnd = styled.div`
             display: flex;
-            height: 45px;
+            height: 100%;
             width: 140px;
             background-color: #F2F2F2;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            > svg {
-                color: #DA251D;
-                width: 25px;
-                height: 25px;
+            > img {
+                width: 35px;
+                height: 35px;
             }
             >span {
                 text-align: end;

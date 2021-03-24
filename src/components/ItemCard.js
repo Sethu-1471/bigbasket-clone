@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import { HeptagonFill, RecordBtn, CartCheckFill, Cart3 } from "react-bootstrap-icons"
+import { HeptagonFill, RecordBtn, CartCheckFill, Cart3 } from "react-bootstrap-icons";
+import logo from "../assets/smallBucket.png" 
 
 export default function ItemCard({image, name}) {
     return (
@@ -15,14 +16,14 @@ export default function ItemCard({image, name}) {
                 <RecordBtn />
                 <span style={{ fontSize: 12, opacity: "0.6" }}>Fresho</span>
                 <span style={{ fontSize: 14 }}> {name} </span>
-                <span style={{ fontSize: 12, fontWeight: "bold", marginTop: 30, opacity: 0.6 }}>1kg</span>
+                <span style={{ fontSize: 12, fontWeight: "bold", marginTop: 20, opacity: 0.6 }}>1kg</span>
             </ImageCardBody>
             <ImageCardFooter>
                 <span style={{ fontSize: 12, opacity: 0.6 }}>
                 MRP:<span style={{ textDecoration: "line-through" }}>Rs 36.25 </span><span style={{ fontSize: 18, opacity: 1 }}>Rs 29</span> 
                 </span>
                 <span>
-                    <CartCheckFill />
+                    <img src={logo} />
                     <span style={{ fontSize: 12}}>Standard Delivery: Today 5:30PM - 7:30PM</span>
                 </span>
                 <span>
@@ -45,11 +46,16 @@ const ItemCardContainer = styled.div`
     width: 14.3rem;
     border: 0.5px solid #F1F1F1;
     padding: 5px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
+    }
 `;
 
 const ItemCardHeader = styled.div`
     margin: 5px 0;
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    z-index: 10;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
     font-size: 10px;
     display: flex;
     justify-content: flex-end;
@@ -63,8 +69,12 @@ const ItemCardHeader = styled.div`
 `;
 
 const ItemCardImage = styled.div`
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    padding-top: 5px;
     >img {
-        width: 100%;
+        width: 80%;
     }
 `;
 
@@ -83,9 +93,9 @@ const ImageCardFooter = styled.div`
     padding: 2px;
     >span:nth-child(2){
         display: flex;
-        >svg{
-            font-size: 24px;
-            padding-right: 2px;
+        >img{
+            padding: 5px;
+            height: 23px;
         }
     }
     > span:nth-child(3) {

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import FirstSlider from "./components/FirstSlider";
 import SecondSlider from './components/SecondSlide'
@@ -59,7 +59,9 @@ import brImageTwo from "./assets/store/2.png"
 import BrImageThree from "./assets/store/3.png"
 import BrImageFour from "./assets/store/4.png"
 import BrImageFive from "./assets/store/5.png"
-import BrImageSix from "./assets/store/6.png" 
+import BrImageSix from "./assets/store/6.png"
+
+import { ChevronCompactUp } from "react-bootstrap-icons"
 
 function App() {
   let mostPopular = [{image: BImageOne, name: "Masks & Gloves"},{image: BImageTwo, name: "Ice Creams & Milk"},{image: BImageThree, name: "Summer Fresh Face Wash"},{image: BImageFour, name: "Holi Colors"}];
@@ -89,8 +91,16 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const moveTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
   return (
     <AppContainer>
+      {show ? <span onClick={moveTop}>
+        <ChevronCompactUp />
+      </span> : null}
       <Navbar />
       {!show ? null : <ScrollHeader />}
       <FirstSlider />
@@ -121,4 +131,22 @@ export default App;
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  >span{
+    width: 35px;
+    height: 35px;
+    background-color: #84C225;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1090;
+    bottom: 20px;
+    right: 30px;
+    cursor: pointer;
+    > svg {
+      font-size: 25px;
+      color: white;
+    }
+  }
 `;
