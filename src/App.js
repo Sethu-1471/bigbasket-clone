@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
+import { useSelector, useDispatch } from "react-redux";
+import { resizingFunction } from "./actions"
 import FirstSlider from "./components/FirstSlider";
 import SecondSlider from './components/SecondSlide'
 import styled from "styled-components";
@@ -14,6 +16,7 @@ import FourthSlider from "./components/FourthSlider";
 import EndPortion from "./components/EndPortion";
 import Footer from "./components/Footer";
 import ScrollHeader from "./components/ScrollNav";
+import MobileNav from "./components/MobileNav"
 //Images 
 import BImageOne from "./assets/popular/1.jpg"
 import BImageTwo from "./assets/popular/2.jpg"
@@ -54,14 +57,10 @@ import HmageTwo from "./assets/household/2.jpg"
 import HImageThree from "./assets/household/3.jpg"
 import HImageFour from "./assets/household/4.jpg"
 
-import BrImageOne from "./assets/store/1.png"
-import brImageTwo from "./assets/store/2.png"
-import BrImageThree from "./assets/store/3.png"
-import BrImageFour from "./assets/store/4.png"
-import BrImageFive from "./assets/store/5.png"
-import BrImageSix from "./assets/store/6.png"
+
 
 import { ChevronCompactUp } from "react-bootstrap-icons"
+import BrandStore from "./components/BrandStore";
 
 function App() {
   let mostPopular = [{image: BImageOne, name: "Masks & Gloves"},{image: BImageTwo, name: "Ice Creams & Milk"},{image: BImageThree, name: "Summer Fresh Face Wash"},{image: BImageFour, name: "Holi Colors"}];
@@ -71,10 +70,10 @@ function App() {
   let beauty = [{image: BeImageFive, name: "Oral Care"},{image: BeImageTwo, name: "Shaving & Men Grooming"},{image: BeImageThree, name: "Summer Fun & Sunscreens"},{image: BeImageFour, name: "Women Wellness"}];
   let drinks = [{image: DbImageOne, name: "Tea & Coffee"},{image: DbmageTwo, name: "Cold Drinks"},{image: DbImageThree, name: "Juices"},{image: DbImageFour, name: "Health Drinks"}];
   let houseHolds = [{image: HImageOne, name: "Detergent Poweder"},{image: HmageTwo, name: "Liquid Detergent"},{image: HImageThree, name: "Home Cleaners"},{image: HImageFour, name: "Freshners"}];
-  let brand = [BrImageOne, brImageTwo, BrImageThree, BrImageFour, BrImageFive, BrImageSix];
 
   const [show, setShow] = useState(false);
-    
+  const dispatch = useDispatch();
+  const size = useSelector(state => state);
     const handleScroll = () => {
         if (
             document.body.scrollTop >= 35 ||
@@ -91,6 +90,22 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const updateDimensions = () => {
+    if (window.innerWidth < 970) {
+      document.getElementById("ViewBoard").style.paddingTop = "70px";
+    } else if(window.innerWidth > 971){
+      document.getElementById("ViewBoard").style.paddingTop = "0px";
+      console.log("i looged");
+    }
+    dispatch(resizingFunction(window.innerWidth));
+  }
+
+  useEffect(() => {
+    if (size < 970){document.getElementById("ViewBoard").style.paddingTop = "70px";}
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   const moveTop = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -101,8 +116,9 @@ function App() {
       {show ? <span onClick={moveTop}>
         <ChevronCompactUp />
       </span> : null}
-      <Navbar />
-      {!show ? null : <ScrollHeader />}
+    { size > 970 ? (<> <Navbar />
+        {!show ? null : <ScrollHeader />} </>) : <MobileNav />}
+      <div id="ViewBoard">
       <FirstSlider />
       <Lists />
       <SmartBasket />
@@ -117,10 +133,11 @@ function App() {
       <FrameOne name="Cleaning & Household" ImageArr={houseHolds} />
       <FrameTwo name="Beauty and Hygiene" splName="Budget Beauty" splImage={BeImageOne} ImageArr={beauty} />
       <ThirdSlide />
-      <FrameOne name="Brand Store" ImageArr={brand} />
+      <BrandStore />
       <FourthSlider />
       <EndPortion />
-      <Footer />
+        <Footer />
+    </div>
     </AppContainer>
   );
 }

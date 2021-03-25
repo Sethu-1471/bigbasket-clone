@@ -18,7 +18,9 @@ export default function BankOffer() {
                 <BankOfferImages>
                     {
                         ImageArr.map((image, index) => (
-                            <img src={image} width="23%" key={index} />
+                            <span>
+                                <img src={image} width="23%" key={index} />
+                            </span> 
                         ))
                     }
                 </BankOfferImages>
@@ -51,11 +53,15 @@ const BankOfferHeader = styled.div`
 
 const BankOfferImages = styled.div`
     display: flex;
-    justify-content: space-around;
-    >img {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    >span{
+        margin: 4px;
+        >img {
         border:0.5px solid #D5D5D5;
+        width: 263px;
     }
     >img:hover {
         box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-    }
+    }}
 `;

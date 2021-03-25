@@ -62,7 +62,7 @@ We deliver to 25 cities across India and maintain excellent delivery times, ensu
                 </EndPortionCenter>
                 <hr />
                 <EndPortionFooter>
-                <span>
+                     <span>
                         <span className="LeftSide">
                         POPULAR CATEGORIES:
                         </span>
@@ -82,9 +82,8 @@ We deliver to 25 cities across India and maintain excellent delivery times, ensu
                         CITIES WE SERVE:
                         </span>
                         <span className="RightSide">
-                           
                         Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Nashik, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, </span>
-                    </span>
+                         </span>
                     <span>
                         <span className="LeftSide">
                         PAYMENT OPTIONS:
@@ -116,6 +115,7 @@ const EndPortionheader = styled.div`
 const EndPortionCenter = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding-top: 20px;
     >span {
         display: flex;
@@ -143,18 +143,18 @@ const EndPortionCenter = styled.div`
 const EndPortionFooter = styled.div`
     margin-top: 20px;
    >span {
-       padding: 10px 20px;
        display: flex;
-       flex: 1;
+       flex-wrap: wrap;
+ 
       >.LeftSide{
           color: #84C225;
           font-size: 14px;
-          flex: 0.2;
+          width: 20%;
       }
       >.RightSide{
-          flex:0.8;
+          width: 80%;
           font-size: 13px;
-          margin-left: -40px;
+          /* margin-left: -40px; */
       }
    }
 `;

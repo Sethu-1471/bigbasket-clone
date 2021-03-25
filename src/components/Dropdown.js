@@ -107,6 +107,7 @@ export default function Dropdown({ setRef, top }) {
                         <span key={i} onMouseOver={() => handleSecondDropdown(i)}> {Object.keys(el)[0]} </span>
                     ))
                 }
+                <span>More</span>
             </span>
             <span>
             {

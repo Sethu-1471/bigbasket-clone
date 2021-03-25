@@ -79,12 +79,13 @@ const FrameTwoHeader = styled.div`
 
 const FrameTwoImages = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 `;
 
 const FrameTwoImagesLeft = styled.div`
     border:0.5px solid #D5D5D5;
     margin: 3px;
+    max-height: 406px;
     > .Container {
         display: flex;
         > .CenterPart {

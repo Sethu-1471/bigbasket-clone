@@ -94,7 +94,10 @@ const HeaderBottomSearch = styled.div`
 
     > input {
         background-color: transparent;
-        border: 1px solid black;
+        border-top: 1px solid #888888;
+        border-bottom: 1px solid #888888;
+        border-right: 1px solid #84C225;
+        border-left: 1px solid #888888;
         text-align: start;
         min-width: 90%;
         height: 30px;

@@ -46,13 +46,14 @@ const FrameOneHeader = styled.div`
 
 const FrameOneImages = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     >span{
         border:0.5px solid #D5D5D5;
-        margin: 3px;
         padding: 3px;
+        margin: 5px;
         >img {
-        width: 100%;
+        width: 286px;
         }
         > .Text {
             font-size: 22px;

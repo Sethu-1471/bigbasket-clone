@@ -15,7 +15,7 @@ export default function Lists() {
                 <span className="SecondStyle">
                     The<span style={{color: "#E37570"}}>beauty</span>store
                 </span>
-                <img src={ImageOne} />
+                <img src={ImageOne} className="FirstStyle"/>
                 <span className="FirstStyle">
                     Combo store
                 </span>
@@ -33,7 +33,8 @@ const ListContainer = styled.div`
     > span {
         width: 80%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
         >.FirstStyle{
             border-radius: 8px;
             width: 190px;
@@ -46,8 +47,10 @@ const ListContainer = styled.div`
             font-size: 20px;
             text-align: center;
             line-height: 1.4rem;
+            margin: 4px;
         }
         > .SecondStyle{
+            margin: 4px;
             border-radius: 8px;
             width: 190px;
             height: 60px;

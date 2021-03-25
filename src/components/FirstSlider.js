@@ -8,10 +8,11 @@ import ImageThree from "../assets/3.png"
 import ImageFour from "../assets/4.png"
 import ImageFive from "../assets/5.png"
 import meet from "../assets/meat.png"
-import { BorderBottom } from 'react-bootstrap-icons';
+import { useSelector } from "react-redux"
 
 export default function FirstSlider() {
     const [index, setIndex] = useState(0);
+    const size = useSelector(state => state);
     let ImageArr = [ImageOne, ImageTwo, meet,ImageFive, ImageThree, ImageFour ];
     let TradeStyle = {
         background: "#F6F9FC",
@@ -53,7 +54,7 @@ export default function FirstSlider() {
     return (
         <FirstSliderContainer>
             <span>
-                <span>
+                { size > 970 ? <span>
                 <span style={index == 0 ? ActiveTradeStyle : TradeStyle} onClick={() => handleChangeIndex(0)}>
                          <span>Offers On<br /><span style={smallTextStyle}>staples</span></span>
                         </span>
@@ -72,9 +73,7 @@ export default function FirstSlider() {
                         <span style={index == 5 ? ActiveTradeStyle : TradeStyle} onClick={() => handleChangeIndex(5)}>
                          <span>Breakfast<br /><span style={smallTextStyle}>Cereals</span></span>
                         </span>
-                        
-                        
-                </span>
+                </span> : ""}
             <Carousel controls={false} interval={3000} onSelect={handleSelect} activeIndex={index}>
                 {
                     ImageArr.map((image, index) => (
