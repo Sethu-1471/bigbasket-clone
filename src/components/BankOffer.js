@@ -44,10 +44,8 @@ const BankOfferHeader = styled.div`
     border-bottom: 2px solid #E2E2E2;
     display: flex;
     margin: 10px 0;
-    >span:nth-child(1) {
-        margin-left: 45%;
-        font-size: 24px;
-    }
+    font-size: 24px;
+    justify-content: center;
 `;
 
 

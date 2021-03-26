@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { resizingFunction } from "./actions"
+import Header from "./components/Header";
 import FirstSlider from "./components/FirstSlider";
 import SecondSlider from './components/SecondSlide'
 import styled from "styled-components";
@@ -72,6 +73,7 @@ function App() {
   let houseHolds = [{image: HImageOne, name: "Detergent Poweder"},{image: HmageTwo, name: "Liquid Detergent"},{image: HImageThree, name: "Home Cleaners"},{image: HImageFour, name: "Freshners"}];
 
   const [show, setShow] = useState(false);
+  const [headerShow, setHeaderShow] = useState(true);
   const dispatch = useDispatch();
   const size = useSelector(state => state);
     const handleScroll = () => {
@@ -79,7 +81,7 @@ function App() {
             document.body.scrollTop >= 35 ||
             document.documentElement.scrollTop >= 35
           ) {
-            setShow(true);
+          setShow(true);
           } else {
             setShow(false);
             }
@@ -111,8 +113,13 @@ function App() {
     document.documentElement.scrollTop = 0;
   }
 
+  const handleClose = () => {
+    setHeaderShow(false);
+  }
+
   return (
     <AppContainer>
+      {headerShow ? <Header handleClose={handleClose} /> : ""}
       {show ? <span onClick={moveTop}>
         <ChevronCompactUp />
       </span> : null}
